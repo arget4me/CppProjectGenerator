@@ -44,11 +44,6 @@ void OpenExplorer(std::string path)
     ShellExecuteA(NULL, "open", path.c_str(), NULL, NULL, SW_SHOWDEFAULT);
 }
 
-void RunBatFile(std::string batFile)
-{
-    ShellExecuteA(NULL, batFile.c_str(), "", NULL, NULL, SW_SHOWDEFAULT);
-}
-
 #include <filesystem>
 // Recursively copies all files and folders from src to target and overwrites existing files in target.
 void CopyRecursive(const std::filesystem::path& src, const std::filesystem::path& target) noexcept
@@ -188,7 +183,5 @@ int main(int argc, char* argv[])
     ofs.close();
 
     std::cout << "Successfully created project " << projectName << "\n";
-    // OpenExplorer(std::filesystem::current_path().u8string());
-    RunBatFile("edit.bat");
-
+    OpenExplorer(std::filesystem::current_path().u8string());
 }
